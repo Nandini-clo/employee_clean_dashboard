@@ -6,6 +6,7 @@ import io
 import pandas as pd
 import plotly.express as px
 from sklearn.preprocessing import MinMaxScaler
+import os
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE])
 app.title = "Employee Analysis Dashboard"
@@ -146,4 +147,6 @@ def analyze_data(n_clicks, contents, filenames, header_row):
     ])
 
 if __name__ == "__main__":
-    app.run(debug=True)
+     port = int(os.environ.get("PORT", 8050))
+     app.run(host="0.0.0.0", port=port, debug=True)
+
